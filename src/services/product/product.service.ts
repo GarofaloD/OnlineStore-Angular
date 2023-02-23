@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Product} from "../../common/product";
 import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
-import {resolve} from "@angular/compiler-cli";
+import {Observable} from "rxjs";
+import {map} from 'rxjs/operators';
+import {getXHRResponse} from "rxjs/internal/ajax/getXHRResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +16,23 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProductList():Observable<Product[]>{
+  public getProductList():Observable<Product[]>{
     return this.httpClient.get<GetResponse>(this.getProducts_baseUrl).pipe(
-      map(response=>response._embedded.products)
+      map(response=>response.products)
     )
   }
+
+
+
+
+
+
 
 
 }
 
 interface GetResponse{
-  _embedded:{
+
     products:Product[];
-  }
+
 }
