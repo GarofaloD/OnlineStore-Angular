@@ -13,10 +13,12 @@ export class ProductListComponent implements OnInit{
 
   products : Product[] = []
   currentCategoryId: string = '';
+  searchMode: boolean = false;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit():void{
+    this.handleSearchProducts()
     this.listAllProducts();
     this.route.paramMap.subscribe(() =>{
       this.listProductsByCategory()
@@ -49,12 +51,24 @@ export class ProductListComponent implements OnInit{
       this.currentCategoryId = this.route.snapshot.paramMap.get('id')!
     } else {
       //not available
-      this.currentCategoryId = '';
+      this.currentCategoryId = 'groceries';
     }
 
     //get the products for the category we are pulling
     this.productService.getProductListByCategory(this.currentCategoryId).subscribe(data=>{
       this.products = data
+    })
+  }
+
+
+  //search using keywords
+  handleSearchProducts(){
+    const searchKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
+    console.log(searchKeyword)
+    //search for the products using the keyword
+    this.productService.searchProducts(searchKeyword).subscribe(data=>{
+      this.products = data;
+      console.log(data)
     })
   }
 

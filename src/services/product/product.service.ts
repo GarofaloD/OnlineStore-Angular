@@ -29,29 +29,31 @@ export class ProductService {
   public getProductListByCategory(categoryId: string):Observable<Product[]>{
     //url based on the category
     const searchUrl = `${this.getProducts_baseUrl}/category/${categoryId}`
+    console.log(searchUrl)
+
 
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
       map(response=>response.products)
     )
   }
 
-  //getting categories
-  // public getProductCategories():Observable<ProductCategory[]>{
-  //
-  //   let dataCategories = this.httpClient.get(this.getCategories_URL)
-  //  console.log(dataCategories)
-  //
-  //   //url is different
-  //   return this.httpClient.get<GetResponseProductCategory>(this.getCategories_URL).pipe(
-  //     map(response=>response.productCategory)
-  //   )
-  // }
 
+
+  //get categories from json
   public getProductCategories(){
     return this.httpClient.get(this.getCategories_URL)
   }
 
 
+  public searchProducts(searchKeyword: string): Observable<Product[]>{
+    //url based on the keyword
+    const searchUrl = `${this.getProducts_baseUrl}/search?q=${searchKeyword}`
+    console.log(`search with keyword url = ${searchUrl} `)
+
+    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
+      map(response=>response.products)
+    )
+  }
 
 
 
