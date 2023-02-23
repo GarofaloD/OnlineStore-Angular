@@ -16,11 +16,23 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getProductList():Observable<Product[]>{
+  //For the main landing page
+  public getMainProductList(): Observable<Product[]>{
     return this.httpClient.get<GetResponse>(this.getProducts_baseUrl).pipe(
+      map(response => response.products)
+    )
+  }
+
+  //For individual routes / categories
+  public getProductListByCategory(categoryId: string):Observable<Product[]>{
+    //url based on the category
+    const searchUrl = `${this.getProducts_baseUrl}/category/${categoryId}`
+
+    return this.httpClient.get<GetResponse>(searchUrl).pipe(
       map(response=>response.products)
     )
   }
+
 
 
 
