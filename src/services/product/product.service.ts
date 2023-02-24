@@ -29,7 +29,7 @@ export class ProductService {
   public getProductListByCategory(categoryId: string):Observable<Product[]>{
     //url based on the category
     const searchUrl = `${this.getProducts_baseUrl}/category/${categoryId}`
-    console.log(searchUrl)
+    //console.log(searchUrl)
 
 
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
@@ -48,7 +48,7 @@ export class ProductService {
   public searchProducts(searchKeyword: string): Observable<Product[]>{
     //url based on the keyword
     const searchUrl = `${this.getProducts_baseUrl}/search?q=${searchKeyword}`
-    console.log(`search with keyword url = ${searchUrl} `)
+    console.log(`search with keyword url being passed to the rest-api = ${searchUrl} `)
 
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
       map(response=>response.products)

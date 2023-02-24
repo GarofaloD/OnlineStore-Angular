@@ -6,14 +6,30 @@
         <!--loop over the collection of products-->
         <div *ngFor="let tempProduct of products" class="col-md-3">
           <div class="product-box">
-            <img src="{{tempProduct.thumbnail}}" class="img-responsive">
-            <h1>{{tempProduct.title}}</h1>
+
+            <!--            button for product detail-->
+            <a routerLink="/products/{{tempProduct.id}}">
+              <img src="{{tempProduct.thumbnail}}" class="img-responsive">
+            </a>
+
+            <!--            button for product detail-->
+            <a routerLink="/products/{{tempProduct.id}}">
+              <h1>{{tempProduct.title}}</h1>
+            </a>
+
             <div class="price">{{tempProduct.price | currency:'USD'}}</div>
             <a href="#" class="primary-btn">Add to Cart</a>
           </div>
+        </div>
+
+        <!--        if product is not found-->
+        <!--        safe navigation operator: if products is null or undefined or == 0 -->
+        <div *ngIf="products?.length ==0" class="alert alert-warning col-md-12" role="alert">
+          No products found
         </div>
 
       </div>
     </div>
   </div>
 </div>
+

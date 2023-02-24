@@ -15,9 +15,10 @@ export class SearchComponent implements OnInit{
 
   }
 
-  //searching method called by button
+  //searching method called by search button
   doSearch(searchValue: string){
     console.log(`value = ${searchValue}`)
+    //route the data to the search route
     this.router.navigateByUrl(`/search/${searchValue}`)
   }
 
