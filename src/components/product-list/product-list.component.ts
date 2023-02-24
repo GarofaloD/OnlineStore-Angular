@@ -33,7 +33,7 @@ export class ProductListComponent implements OnInit{
 
 
 
-
+  //List all the products
   listAllProducts(){
     //subscription to the Product service
     this.productService.getMainProductList().subscribe( //this calls for the execution of the getProductList observable in the Product service
@@ -44,6 +44,7 @@ export class ProductListComponent implements OnInit{
   }
 
 
+  //List products by category
   listProductsByCategory(){
 
     //check if 'id' parameter is available
@@ -66,7 +67,7 @@ export class ProductListComponent implements OnInit{
   }
 
 
-  //search using keywords
+  //search products using keywords
   handleSearchProducts(){
     const searchKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
     console.log(`keyword into handlesearchProducts = ${searchKeyword}`)
@@ -77,6 +78,15 @@ export class ProductListComponent implements OnInit{
       console.log(`receiving data from service searching by keyword = ${this.products}`)
     })
   }
+
+  addToCart(product: Product){
+    console.log(`Product name: ${product.title}, Product price: ${product.price}`)
+
+  }
+
+
+
+
 
 
 }

@@ -9,25 +9,9 @@
       </a>
     </div>
 
-<!--    <div class="menu-sidebar-content js-scrollbar1">-->
-<!--      <nav class="navbar-sidebar">-->
-<!--        <ul class="list-unstyled navbar-list">-->
-<!--          <li>-->
-<!--            <a routerLink="/category/fragrances" routerLinkActive="active-link">Fragrances</a>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <a routerLink="/category/skincare" routerLinkActive="active-link">Skin Care</a>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <a routerLink="/category/groceries" routerLinkActive="active-link">Groceries</a>-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--      </nav>-->
-<!--    </div>-->
 
+<!--    Sidebar items > product-category-menu.ts-->
     <app-product-category-menu></app-product-category-menu>
-
-
 
 
   </aside>
@@ -40,21 +24,14 @@
         <div class="container-fluid">
           <div class="header-wrap">
 
-<!--            <form class="form-header" onsubmit="return false;" method="GET">-->
-<!--              <input class="au-input au-input-xl" type="text" name="search"-->
-<!--                     placeholder="Search for data ..." />-->
-<!--              <button class="au-btn-submit" type="submit">-->
-<!--                Search-->
-<!--              </button>-->
-<!--            </form>-->
+
+<!--            Search bar > search.component.ts-->
             <app-search></app-search>
 
-            <div class="cart-area d-n">
-              <a href="shopping-detail.html">
-                <div class="total">19.22 <span> 2</span> </div> <i class="fa fa-shopping-cart"
-                                                                   aria-hidden="true"></i>
-              </a>
-            </div>
+<!--            Cart Status > car-status.component.ts-->
+            <app-cart-status></app-cart-status>
+
+
           </div>
           <div class="account-wrap"></div>
         </div>
