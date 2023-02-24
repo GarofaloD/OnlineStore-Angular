@@ -55,7 +55,14 @@ export class ProductService {
     )
   }
 
+  getProduct(productId: number):Observable<Product>{ //returning only one product
 
+    //url for individual products
+    const prodURL = `${this.getProducts_baseUrl}/${productId}`
+    console.log(prodURL)
+
+    return this.httpClient.get<Product>(prodURL)
+  }
 
 
 
