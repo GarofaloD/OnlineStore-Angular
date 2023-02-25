@@ -51,7 +51,7 @@ export class CartService {
 
 
 
-  private calculateCartTotals() {
+  public calculateCartTotals() {
     let totalPriceValue : number = 0;
     let totalQuantityValue: number = 0;
 
