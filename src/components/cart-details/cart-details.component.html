@@ -1,0 +1,68 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+
+<!--      only show the table if the cart is not empty-->
+      <div *ngIf="cartItems.length > 0 ">
+
+        <table class="table table-hover">
+          <thead class="thead-dark table-dark">
+          <tr>
+            <th></th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let tempCartItem of cartItems">
+            <td class="align-middle">
+              <img src="{{tempCartItem.thumbnail}}" class="img-responsive" height="150" width="150">
+            </td>
+            <td>
+              <p>{{tempCartItem.title}}</p>
+              <p >{{tempCartItem.price | currency: 'USD'}}</p>
+            </td>
+
+            <td>
+              <div class="items">
+                {{tempCartItem.quantity}}
+              </div>
+            </td>
+
+            <td>
+              {{tempCartItem.quantity * tempCartItem.price | currency: 'USD'}}
+            </td>
+
+          </tr>
+
+          <tr>
+            <td colspan="2"></td>
+            <td style="font-weight: bold">
+              <p>Total Items: {{totalQuantity}}</p>
+              <p>Total Price: {{totalPrice | currency: 'USD'}}</p>
+              <a routerLink="/checkout" class="btn-sm btn btn-primary">Checkout</a>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+
+      <div *ngIf="cartItems.length == 0" class="alert alert-warning col-md-12" role="alert">
+        Cart is empty
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
