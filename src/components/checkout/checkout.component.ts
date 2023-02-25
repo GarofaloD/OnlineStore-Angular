@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {CartService} from "../../services/cart/cart.service";
 
 @Component({
   selector: 'app-checkout',
@@ -15,10 +16,13 @@ export class CheckoutComponent implements OnInit{
   totalQuantity: number = 0
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private cartService: CartService) {
   }
 
   ngOnInit():void{
+
+    this.reviewCartDetails();
+
 
     this.checkoutFormGroup = this.formBuilder.group({
       //first form in the group: customer
@@ -35,13 +39,33 @@ export class CheckoutComponent implements OnInit{
       })
     })
 
+
+
+
+
   }
+
+
 
   onSubmit(){
     console.log("Handling the submit button")
     console.log(this.checkoutFormGroup.get('customer')?.value);
   }
 
+  //show cart details
+  private reviewCartDetails() {
+
+    //get the total price
+    this.cartService.totalPrice.subscribe(data =>{
+      this.totalPrice = data
+    })
+
+    //get the total quantity
+    this.cartService.totalQuantity.subscribe(data =>{
+      this.totalQuantity = data
+    })
+
+  }
 
 
 }
