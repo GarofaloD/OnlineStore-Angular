@@ -11,6 +11,9 @@ export class CheckoutComponent implements OnInit{
 
   // @ts-ignore
   checkoutFormGroup: FormGroup;
+  totalPrice: number = 0
+  totalQuantity: number = 0
+
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -23,9 +26,22 @@ export class CheckoutComponent implements OnInit{
         firstName: [''],
         lastName: [''],
         email: [''],
+      }),
+      payment: this.formBuilder.group({
+        creditCardNumber: [''],
+        creditCardExpirationDate: [''],
+        creditCardSecurityCode: [''],
+        creditCardZipCode: [''],
       })
     })
 
   }
+
+  onSubmit(){
+    console.log("Handling the submit button")
+    console.log(this.checkoutFormGroup.get('customer')?.value);
+  }
+
+
 
 }

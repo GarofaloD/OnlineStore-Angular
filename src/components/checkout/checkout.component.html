@@ -4,10 +4,10 @@
 
 
 
-      <form [formGroup]="checkoutFormGroup">
+      <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
 
-<!--        customer form group-->
-<!--        first form in the group-->
+
+<!--        first form in the group : customer-->
         <div formGroupName="customer" class="form-area">
           <h3>Customer</h3>
 
@@ -41,10 +41,66 @@
 
 
         </div>
+
+
+        <!-- second form in the group : payment-->
+        <div formGroupName="payment" class="form-area">
+          <h3>Payment</h3>
+
+          <div class="row">
+            <div class="col-md-2"><label>Credit Card #</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardNumber" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Expiration Date</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardExpirationDate" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Security Code</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardSecurityCode" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Zip Code</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="creditCardZipCode" type="text">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+<!--        Order Details-->
+
+        <div formGroupName="orderReview" class="form-area">
+          <h3>Review Your Order</h3>
+
+          <p>Total Quantity: {{totalQuantity}}</p>
+          <p>Total Price: {{totalPrice}}</p>
+
+
+        </div>
+
+
 <!--        submit-->
 
         <div class="text-center">
-          <button type="submit"class="btn btn-info">Confirm Order</button>
+          <button  type="submit"class="btn btn-info">Confirm Order</button>
         </div>
 
       </form>
