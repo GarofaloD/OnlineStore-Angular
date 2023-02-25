@@ -41,5 +41,17 @@ export class CartDetailsComponent implements OnInit{
 
   }
 
+  //For additional buttons
+  incrementQuantity(cartItem: CartItem){
+    this.cartService.addToCart(cartItem)
+  }
+
+  decrementQuantity(cartItem: CartItem){
+    this.cartService.removeFromCart(cartItem)
+  }
+
+  remove(cartItem: CartItem){
+    this.cartService.delete(cartItem)
+  }
 
 }

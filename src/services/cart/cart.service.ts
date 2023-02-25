@@ -67,8 +67,31 @@ export class CartService {
 
   }
 
+  removeFromCart(cartItem: CartItem){
+    //reduce amount of this specific item
+    cartItem.quantity--;
+
+    if(cartItem.quantity == 0){
+      this.delete(cartItem);
+    } else {
+      this.calculateCartTotals();
+    }
+  }
 
 
+  delete(cartItem: CartItem) {
+
+    //find the item in the current cart
+    const itemIndex = this.itemsInCart.findIndex( item => item.id === cartItem.id)
+
+    //if the index is valid
+    if(itemIndex > -1){
+      //locate the item in the array and delete...
+      this.itemsInCart.splice(itemIndex, 1)
+      //once deleted, recalculate totals
+      this.calculateCartTotals()
+    }
+  }
 
   private logCartData(totalPriceValue: number, totalQuantityValue: number) {
 
