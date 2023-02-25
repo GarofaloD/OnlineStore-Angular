@@ -18,7 +18,7 @@ export class CartService {
     //check if we already have the item in the cart
     let alreadyInCart: boolean = false
     // @ts-ignore
-    let existingCartItem: CartItem = null;
+    let existingCartItem: CartItem = undefined;
 
 
     //If there are items in the array...
@@ -32,8 +32,9 @@ export class CartService {
         }
       }
 
+
       //check if we found it > will change to true if existingCartItem stops being undefined
-      alreadyInCart = (existingCartItem != null);
+      alreadyInCart = (existingCartItem != undefined);
     }
 
     //if already in cart...
